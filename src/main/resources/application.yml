@@ -1,0 +1,22 @@
+spring:
+  ai:
+    openai:
+      api-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxMjQ1NTg0OSwianRpIjoiMGQ5NDMzNDMtMWM5OS00Nzg0LTgzOTUtMmE1MTE4ZjY5YTE0IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2NTIzOGYxNDljMjI0NjE5YmNlMTUzMjc4ZThlZGUzMSIsIm5iZiI6MTcxMjQ1NTg0OSwiZXhwIjoxNzI4MDA3ODQ5LCJ1aWQiOiI2NGI5NGU5OTAxNjhkZmI5NzA1NzAxNjYiLCJ1cGxhdGZvcm0iOiIiLCJyb2xlcyI6WyJ1bmF1dGhlZF91c2VyIl19.b8lcGSEFrjY2e_yAcc_rTmXRpKVO1GRZ9DEwy_2q0m4
+      base-url: https://glm-free-api-j2dp.onrender.com
+  threads:
+    virtual:
+      enabled: true
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key:  sk-NMA7Tzt1n9y612iCBRdnaPpt1GCaT7sTob5SADXnx1uXL3Xt
+      log-requests: true
+      log-responses: true
+      model-name: gpt-3.5-turbo
+      temperature: 0.7
+logging:
+  level:
+    dev:
+      ai4j:
+        openai4j: DEBUG
+      langchain4j: DEBUG
