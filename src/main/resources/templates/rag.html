@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat RAG</title>
+    <link href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-3">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Ask question about your document - RAG</h2>
+                    <form method="get" th:action="@{/rag}">
+                        <div class="mb-3">
+                            <label class="form-label" for="question">Ask your question</label>
+                            <input class="form-control" id="question" name="question" th:value="${question}"
+                                   type="text">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-info btn-lg" type="submit">Search</button>
+                        </div>
+                    </form>
+                    <div class="mt-4">
+                        <h3 class="text-center">Response:</h3>
+                        <div class="text-center" th:text="${response}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">Badr Kacimi - 2024</span>
+    </div>
+</footer>
+</body>
+</html>
