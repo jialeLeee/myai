@@ -65,3 +65,18 @@ Alternatively use the [httpie](https://httpie.io/) client
 http localhost:8080/ai/simple message=='Tell me a joke about a cow.'
 ```
 # myai
+
+## 访问pdf上传页面
+```shell
+curl localhost:8080/index
+```
+![img_1.png](img_1.png)
+
+## 上传完成自动查询页面
+```shell
+curl localhost:8080/rag
+```
+![img.png](img.png)
+
+## 参考
+* [https://github.com/badrkacimi/demo-rag-spring-ai](https://github.com/badrkacimi/demo-rag-spring-ai)
