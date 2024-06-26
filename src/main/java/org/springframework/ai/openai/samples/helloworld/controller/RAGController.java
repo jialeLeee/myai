@@ -36,6 +36,11 @@ public class RAGController {
         return "index";
     }
 
+    @GetMapping("sse/index")
+    public String sseIndex() {
+        return "sse/index";
+    }
+
     @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         if (!file.isEmpty()) {

@@ -8,15 +8,18 @@
         body {
             background-color: #f8f9fa;
         }
+
         .container {
             margin-top: 50px;
         }
+
         .card {
             border: none;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             background-color: #fff;
         }
+
         .card-header {
             border-radius: 20px 20px 0 0;
             background-color: #009ca4;
@@ -24,24 +27,29 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
+
         .card-title {
             font-size: 24px;
             font-weight: bold;
             text-align: center;
             margin-bottom: 0;
         }
+
         .card-body {
             padding: 40px;
         }
+
         .form-label {
             font-weight: bold;
             color: #007bff;
         }
+
         .form-control {
             border-radius: 10px;
             border-color: #ced4da;
             box-shadow: none;
         }
+
         .btn-primary {
             border-radius: 10px;
             padding: 12px 30px;
@@ -49,12 +57,41 @@
             background-color: #007bff;
             border-color: #007bff;
         }
+
         .btn-primary:hover {
             background-color: #0056b3;
             border-color: #0056b3;
         }
     </style>
 </head>
+<script src="https://unpkg.com/axios/dist/axios.min.js">
+</script>
+
+<script>
+    function submitContent() {
+        let content = document.querySelector('#content').value;
+        const eventSource = new EventSource('http://localhost:8080/ai/simple/stream?message=' + content);
+        const sseDataElement = document.getElementById('sse-data');
+
+        eventSource.onmessage = function (event) {
+            console.log(event.data)
+            // const data = JSON.parse(event.data);
+            sseDataElement.innerHTML += event.data + '<br>';
+        };
+
+        eventSource.onopen = function (event) {
+            sseDataElement.innerHTML = 'Connection opened<br>';
+        };
+
+        eventSource.onerror = function (event) {
+            if (event.target.readyState === EventSource.CLOSED) {
+                sseDataElement.innerHTML += 'Connection closed<br>';
+            } else {
+                sseDataElement.innerHTML += 'Error occurred<br>';
+            }
+        };
+    }
+</script>
 <body>
 <div class="container">
     <div class="row justify-content-center">
@@ -71,6 +108,13 @@
                         </div>
                         <button class="btn btn-primary btn-block" type="submit">Upload</button>
                     </form>
+                </div>
+                <div class="sse-body">
+                    <div class="mb-3">
+                        <input class="form-control" id="content" name="file" type="text">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit" onclick="submitContent()">submit</button>
+                    <div id="sse-data"></div>
                 </div>
             </div>
         </div>
